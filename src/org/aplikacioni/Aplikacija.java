@@ -34,20 +34,20 @@ public class Aplikacija {
 		session.beginTransaction();
 		Query q = session.createQuery("from Odjel");
 		List<Odjel> odjeli = (List<Odjel>) q.list();
-		Query q2 = session.createQuery("from Vrsta");
-		List<Vrsta> vrste = (List<Vrsta>) q2.list();
+		
 		
 		session.getTransaction().commit();
 		session.close();
-		for (Odjel odjel : odjeli) {
-			for (Odsjek odsjek :  odjel.getListaOdsjeka()) {
-				
-				
+		 
+		
+			for (Odjel odjel : odjeli) {
+					System.out.println(odjel.getBrojOdjela()+":"+odjel.getListaOdsjeka().size());
+					for (Odsjek odsjek :  odjel.getListaOdsjeka()) {
+						odsjek.getListaVrsta().size();
+						
+					}
 			}
-			
-			
-			
-		}
+	
  
 	}
 
@@ -55,6 +55,7 @@ public class Aplikacija {
 /*
  * Odjel odjel57 = new Odjel("98"); Doznaka doznaka1 = new Doznaka(200, 60, 70);
  * Doznaka doznaka2 = new Doznaka(150, 40, 50);
+ * 
  * 
  * Redovna redovna = new Redovna(200, 45, 50); Njega njega = new Njega(450, 23,
  * 200); Njega njega1 = new Njega(250, 11, 234); Vanredne_i_stete van = new
