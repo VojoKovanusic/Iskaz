@@ -3,26 +3,27 @@
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-<session-factory>
-<property name="show_sql">true</property>
-<property name="connection.driver_class">com.mysql.jdbc.Driver</property> 
-<property name="connection.url">jdbc:mysql://localhost:3306/test</property> 
-<property name="username">root</property> 
-<property name="password" /> 
-<property name="connection.pool_size">1</property>  
-<property name="dialect">org.hibernate.dialect.MySQLDialect</property> 
-<property name="hbm2ddl.auto">update</property>
-<mapping class="org.deklerativni.Odjel" ></mapping> 
-<mapping class="org.deklerativni.Odsjek" ></mapping> 
-<mapping class="org.deklerativni.Vrsta" ></mapping> 
-<mapping class="org.deklerativni.Doznaka" ></mapping> 
-<mapping class="org.deklerativni.Sjeca" ></mapping> 
-<mapping class="org.deklerativni.Redovna" ></mapping> 
-<mapping class="org.deklerativni.Uzici" ></mapping> 
-<mapping class="org.deklerativni.Njega" ></mapping> 
-<mapping class="org.deklerativni.Proreda" ></mapping> 
-<mapping class="org.deklerativni.Vanredne_i_stete" ></mapping> 
-</session-factory>
+	<session-factory>
+		<property name="show_sql">true</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="username">root</property>
+		<property name="password" />
+		<property name="connection.pool_size">1</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hbm2ddl.auto">update</property>
+	 
+		<mapping class="org.deklerativni.Odjel"></mapping>
+		<mapping class="org.deklerativni.Odsjek"></mapping>
+		<mapping class="org.deklerativni.Vrsta"></mapping>
+		<mapping class="org.deklerativni.Doznaka"></mapping>
+		<mapping class="org.deklerativni.Sjeca"></mapping>
+		<mapping class="org.deklerativni.Redovna"></mapping>
+		<mapping class="org.deklerativni.Uzici"></mapping>
+		<mapping class="org.deklerativni.Njega"></mapping>
+		<mapping class="org.deklerativni.Proreda"></mapping>
+		<mapping class="org.deklerativni.Vanredne_i_stete"></mapping>
+	</session-factory>
 </hibernate-configuration>
 
 

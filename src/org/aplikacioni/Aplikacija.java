@@ -1,87 +1,71 @@
 package org.aplikacioni;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Query;
+import org.baza.Baza;
 import org.deklerativni.Doznaka;
 import org.deklerativni.Njega;
 import org.deklerativni.Odjel;
 import org.deklerativni.Odsjek;
-import org.deklerativni.Proreda;
 import org.deklerativni.Redovna;
-import org.deklerativni.Sjeca;
-import org.deklerativni.Uzici;
 import org.deklerativni.Vanredne_i_stete;
 import org.deklerativni.Vrsta;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.operativni.ObradiOdjel;
-import org.operativni.UbaciUVrstu;
-import org.operativni.Validacija;
-
-import com.mysql.fabric.xmlrpc.base.Array;
+import org.operativni.Dodaj;
 
 public class Aplikacija {
 
 	public static void main(String[] args) throws SQLException {
-
 		SessionFactory sf = new Configuration().configure()
 				.buildSessionFactory();
-		Session session = sf.openSession();
-		session.beginTransaction();
-		Query q = session.createQuery("from Odjel");
-		List<Odjel> odjeli = (List<Odjel>) q.list();
-		
-		
-		session.getTransaction().commit();
-		session.close();
-		 
-		
-			for (Odjel odjel : odjeli) {
-					System.out.println(odjel.getBrojOdjela()+":"+odjel.getListaOdsjeka().size());
-					for (Odsjek odsjek :  odjel.getListaOdsjeka()) {
-						odsjek.getListaVrsta().size();
-						
-					}
-			}
-	
- 
-	}
 
-}
+		List<Odjel> odjeli = Baza.dohvatiOdjele(sf);
+		 
+		Dodaj.dodaj(odjeli);
+		
+		Baza.sacuvajPromjene(sf, odjeli);
 /*
- * Odjel odjel57 = new Odjel("98"); Doznaka doznaka1 = new Doznaka(200, 60, 70);
- * Doznaka doznaka2 = new Doznaka(150, 40, 50);
- * 
- * 
- * Redovna redovna = new Redovna(200, 45, 50); Njega njega = new Njega(450, 23,
- * 200); Njega njega1 = new Njega(250, 11, 234); Vanredne_i_stete van = new
- * Vanredne_i_stete(6, 3, 1);
- * 
- * Vrsta vrsta1 = new Vrsta("jela", doznaka1); vrsta1.setDoznaka(doznaka1);
- * vrsta1.setRedovna(redovna); vrsta1.setNjega(njega); vrsta1.setVanredne(van);
- * 
- * Vrsta vrsta2 = new Vrsta("smrca", doznaka2); vrsta2.setDoznaka(doznaka2);
- * vrsta2.setNjega(njega1);
- * 
- * Odsjek o1 = new Odsjek("02", 1212); Odsjek o2 = new Odsjek("01", 4200);
- * 
- * o1.getListaVrsta().add(vrsta1); o1.getListaVrsta().add(vrsta2);
- * 
- * odjel57.getListaOdsjeka().add(o1); odjel57.getListaOdsjeka().add(o2);
- * 
- * SessionFactory sf = new Configuration().configure() .buildSessionFactory();
- * Session session = sf.openSession(); session.beginTransaction();
- * session.save(odjel57); session.save(o1); session.save(o2);
- * session.save(doznaka1); session.save(doznaka2); session.save(vrsta1);
- * session.save(vrsta2); session.save(vrsta2); session.save(redovna);
- * session.save(njega); session.save(van); session.save(njega1);
- * 
- * session.getTransaction().commit(); session.close();
- * 
+		Odjel odjel = new Odjel(150);
+
+		Odsjek odsjek01 = new Odsjek(05, 4141);
+		Odsjek odsjek02 = new Odsjek(06, 3224);
+
+		Doznaka doznaka1 = new Doznaka(200, 60, 70);
+		Doznaka doznaka2 = new Doznaka(150, 40, 50);
+
+		Vrsta vrsta1 = new Vrsta(21);
+		Vrsta vrsta2 = new Vrsta(41);
+
+		Redovna redovna = new Redovna(1004, 450, 350);
+		Njega njega = new Njega(1004, 450, 350);
+		Njega njega1 = new Njega(250, 11, 234);
+		Vanredne_i_stete van = new Vanredne_i_stete(200, 120, 50);
+
+		vrsta1.setDoznaka(doznaka1);
+		vrsta1.setRedovna(redovna);
+		vrsta1.setNjega(njega);
+		vrsta1.setVanredne(van);
+
+		vrsta2.setDoznaka(doznaka2);
+		vrsta2.setNjega(njega1);
+
+		odsjek01.getListaVrsta().add(vrsta1);
+		odsjek01.getListaVrsta().add(vrsta2);
+
+		odjel.getListaOdsjeka().add(odsjek01);
+		odjel.getListaOdsjeka().add(odsjek02);
+
+		odjeli.add(odjel);
+	*/
+	
+
+	}
+}
+
+/*
  * } Odjel odjOdjel_157 = new Odjel("156"); // listaOdjela.add(odjOdjel_157);
  * listaOdjela.add(odjeOdjel_57); // napavio odsjeke Odsjek odsjek01 = new
  * Odsjek("01", 1414, "111/16", "1/17"); Odsjek odsjek02 = new Odsjek("02",

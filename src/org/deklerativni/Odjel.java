@@ -3,6 +3,7 @@ package org.deklerativni;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,13 +19,13 @@ public class Odjel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idOdjela;
-	private String brojOdjela;
+	private int brojOdjela;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL ) 
 	@JoinTable(name = "odsjeci")
 	private Collection<Odsjek> listaOdsjeka = new ArrayList<>();
 
-	public Odjel(String brojOdjela) {
+	public Odjel(int brojOdjela) {
 
 		this.brojOdjela = brojOdjela;
 
@@ -46,11 +47,11 @@ public class Odjel {
 		this.idOdjela = brojOdjela;
 	}
 
-	public String getBrojOdjela() {
+	public int getBrojOdjela() {
 		return brojOdjela;
 	}
 
-	public void setBrojOdjela(String brojOdjela) {
+	public void setBrojOdjela(int brojOdjela) {
 		this.brojOdjela = brojOdjela;
 	}
 

@@ -3,6 +3,7 @@ package org.deklerativni;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,11 +19,11 @@ public class Odsjek {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idOdsjek;
-	private String brojOdsjeka;
+	private int brojOdsjeka;
 	private int GK;
 	private String knigaPremjerdbe;
 	private String knjigaDoznake;
-	@OneToMany 
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "vste_u_odsjeku")
 	private Collection<Vrsta> listaVrsta = new ArrayList<>();
 
@@ -30,7 +31,7 @@ public class Odsjek {
 	}
 
 	// za konstruktor koji nema doznaku(knjige)
-	public Odsjek(String brojOdsjeka, int gK) {
+	public Odsjek(int brojOdsjeka, int gK) {
 		this.brojOdsjeka = brojOdsjeka;
 		GK = gK;
 		this.knigaPremjerdbe = "-";
@@ -38,7 +39,7 @@ public class Odsjek {
 	}
 
 	// konstruktor za registraciju odsjeka u kojem ima doznaka i otprema
-	public Odsjek(String brojOdsjeka, int gK, String knigaPremjerdbe,
+	public Odsjek(int brojOdsjeka, int gK, String knigaPremjerdbe,
 			String knjigaDoznake) {
 
 		this.brojOdsjeka = brojOdsjeka;
@@ -47,6 +48,7 @@ public class Odsjek {
 		this.knjigaDoznake = knjigaDoznake;
 	}
 
+	 
 	public int getGK() {
 		return GK;
 	}
@@ -55,11 +57,11 @@ public class Odsjek {
 		GK = gK;
 	}
 
-	public String getBrojOdsjeka() {
+	public int getBrojOdsjeka() {
 		return brojOdsjeka;
 	}
 
-	public void setBrojOdsjeka(String brojOdsjeka) {
+	public void setBrojOdsjeka(int brojOdsjeka) {
 		this.brojOdsjeka = brojOdsjeka;
 	}
 

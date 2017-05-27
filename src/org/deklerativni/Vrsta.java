@@ -1,5 +1,6 @@
 package org.deklerativni;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,26 +12,27 @@ import javax.persistence.Table;
 
 @Entity
 public class Vrsta {
-	@Id@GeneratedValue
+	@Id
+	@GeneratedValue
 	private int vrstaId;
-	private String nazivVrste;
-	@OneToOne
+	private int nazivVrste;
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "doznakaID")
 	private Doznaka doznaka;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "redovnaID")
 	private Redovna redovna;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "uziciID")
 	private Uzici uzici;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "njegaID")
 	private Njega njega;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "proredaID")
 	private Proreda proreda;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "vanrednaID")
 	private Vanredne_i_stete vanredne;
 
@@ -39,29 +41,19 @@ public class Vrsta {
 	private int neposjecenoBruto;
 	private String primjedba;
 
+	public Vrsta(int ime) {
+		this.nazivVrste = ime;
+	}
+
 	public Vrsta() {
+	 
 	}
 
-	public Vrsta(Njega njega, Proreda proreda, Redovna redovna,
-			Vanredne_i_stete vanredne) {
-
-		this.njega = njega;
-		this.proreda = proreda;
-		this.redovna = redovna;
-		this.vanredne = vanredne;
-	}
-
-	// konstruktor za doznaku
-	public Vrsta(String nazivVrste, Doznaka doznaka) {
-		this.nazivVrste = nazivVrste;
-		this.doznaka = doznaka;
-	}
-
-	public String getNazivVrste() {
+	public int getNazivVrste() {
 		return nazivVrste;
 	}
 
-	public void setNazivVrste(String nazivVrste) {
+	public void setNazivVrste(int nazivVrste) {
 		this.nazivVrste = nazivVrste;
 	}
 
@@ -72,8 +64,6 @@ public class Vrsta {
 	public void setDoznaka(Doznaka doznaka) {
 		this.doznaka = doznaka;
 	}
-
- 
 
 	public Njega getNjega() {
 		return njega;
