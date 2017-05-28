@@ -57,8 +57,8 @@ public class Odjel {
 
 	@Override
 	public String toString() {
-		return "Odjel [idOdjela=" + idOdjela + ", brojOdjela=" + brojOdjela
-				+ ", listaOdsjeka=" + listaOdsjeka + "]";
+		return "Broj odjela=" + brojOdjela
+				+ "Odsjeci;" + listaOdsjeka + "]";
 	}
 
 }

@@ -55,7 +55,7 @@ public class Sjeca {
 	@Override
 	public String toString() {
 		return "Sjeca [bruto=" + bruto + ", ogrev=" + ogrev + ", tehnika="
-				+ tehnika + "]";
+				+(int) tehnika + "]";
 	}
 
 	public int getNeto() {
@@ -65,7 +65,6 @@ public class Sjeca {
 	public void setNeto(int neto) {
 		this.neto = neto;
 	}
-
 	public void rekapitulacijaSjecePoVrstama_i_sjeci(Sjeca sjeca) {
 		this.bruto += sjeca.getBruto();
 		this.ogrev += sjeca.getOgrev();
@@ -73,5 +72,7 @@ public class Sjeca {
 		neto = this.tehnika + this.ogrev;
 
 	}
+
+
 
 }

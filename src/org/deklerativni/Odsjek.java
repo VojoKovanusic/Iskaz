@@ -19,7 +19,7 @@ public class Odsjek {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idOdsjek;
-	private int brojOdsjeka;
+	private String brojOdsjeka;
 	private int GK;
 	private String knigaPremjerdbe;
 	private String knjigaDoznake;
@@ -31,7 +31,7 @@ public class Odsjek {
 	}
 
 	// za konstruktor koji nema doznaku(knjige)
-	public Odsjek(int brojOdsjeka, int gK) {
+	public Odsjek(String brojOdsjeka, int gK) {
 		this.brojOdsjeka = brojOdsjeka;
 		GK = gK;
 		this.knigaPremjerdbe = "-";
@@ -39,7 +39,7 @@ public class Odsjek {
 	}
 
 	// konstruktor za registraciju odsjeka u kojem ima doznaka i otprema
-	public Odsjek(int brojOdsjeka, int gK, String knigaPremjerdbe,
+	public Odsjek(String brojOdsjeka, int gK, String knigaPremjerdbe,
 			String knjigaDoznake) {
 
 		this.brojOdsjeka = brojOdsjeka;
@@ -57,11 +57,11 @@ public class Odsjek {
 		GK = gK;
 	}
 
-	public int getBrojOdsjeka() {
+	public String getBrojOdsjeka() {
 		return brojOdsjeka;
 	}
 
-	public void setBrojOdsjeka(int brojOdsjeka) {
+	public void setBrojOdsjeka(String brojOdsjeka) {
 		this.brojOdsjeka = brojOdsjeka;
 	}
 
@@ -81,19 +81,20 @@ public class Odsjek {
 		this.knjigaDoznake = knjigaDoznake;
 	}
 
-	@Override
-	public String toString() {
-		return "[brojOdsjeka=" + brojOdsjeka + ", GK=" + GK
-				+ ", knigaPremjerdbe=" + knigaPremjerdbe + ", knjigaDoznake="
-				+ knjigaDoznake + "]";
-	}
-
 	public Collection<Vrsta> getListaVrsta() {
 		return listaVrsta;
 	}
 
 	public void setListaVrsta(Collection<Vrsta> listaVrsta) {
 		this.listaVrsta = listaVrsta;
+	}
+
+	@Override
+	public String toString() {
+		return "Broj Odsjeka=" + brojOdsjeka
+				+ ", GK=" + GK + ", knigaPremjerdbe=" + knigaPremjerdbe
+				+ ", knjigaDoznake=" + knjigaDoznake + ", Vrste"
+				+ listaVrsta + "]";
 	}
 
 }

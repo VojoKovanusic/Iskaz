@@ -15,7 +15,7 @@ public class Vrsta {
 	@Id
 	@GeneratedValue
 	private int vrstaId;
-	private int nazivVrste;
+	private String nazivVrste;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "doznakaID")
 	private Doznaka doznaka;
@@ -41,7 +41,7 @@ public class Vrsta {
 	private int neposjecenoBruto;
 	private String primjedba;
 
-	public Vrsta(int ime) {
+	public Vrsta(String ime) {
 		this.nazivVrste = ime;
 	}
 
@@ -49,11 +49,11 @@ public class Vrsta {
 	 
 	}
 
-	public int getNazivVrste() {
+	public String getNazivVrste() {
 		return nazivVrste;
 	}
 
-	public void setNazivVrste(int nazivVrste) {
+	public void setNazivVrste(String nazivVrste) {
 		this.nazivVrste = nazivVrste;
 	}
 

@@ -1,6 +1,7 @@
 package org.aplikacioni;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.baza.Baza;
@@ -15,6 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.operativni.Dodaj;
+import org.operativni.Rekapitulacija;
 
 public class Aplikacija {
 
@@ -22,27 +24,34 @@ public class Aplikacija {
 		SessionFactory sf = new Configuration().configure()
 				.buildSessionFactory();
 
-		List<Odjel> odjeli = Baza.dohvatiOdjele(sf);
-		 
-		Dodaj.dodaj(odjeli);
-		
-		Baza.sacuvajPromjene(sf, odjeli);
-/*
-		Odjel odjel = new Odjel(150);
+		Meni.ispisGlavnuPonudu();
 
-		Odsjek odsjek01 = new Odsjek(05, 4141);
-		Odsjek odsjek02 = new Odsjek(06, 3224);
+		List<Odjel> odjeli = Baza.dohvatiOdjele(sf);
+Rekapitulacija.poVrstama_i_TipovimaSjeca(odjeli);
+
+
+	
+
+	//	Rekapitulacija.poVrstama_i_TipovimaSjeca(odjeli);
+		// 	Baza.sacuvajPromjene(sf, odjeli); Dodaj.dodaj(odjeli);
+
+		//
+
+	/*	Odjel odjel = new Odjel(230);
+
+		Odsjek odsjek01 = new Odsjek("01", 4141);
+		Odsjek odsjek02 = new Odsjek("02", 3224);
 
 		Doznaka doznaka1 = new Doznaka(200, 60, 70);
 		Doznaka doznaka2 = new Doznaka(150, 40, 50);
 
-		Vrsta vrsta1 = new Vrsta(21);
-		Vrsta vrsta2 = new Vrsta(41);
+		Vrsta vrsta1 = new Vrsta("21");
+		Vrsta vrsta2 = new Vrsta("41");
 
-		Redovna redovna = new Redovna(1004, 450, 350);
-		Njega njega = new Njega(1004, 450, 350);
-		Njega njega1 = new Njega(250, 11, 234);
-		Vanredne_i_stete van = new Vanredne_i_stete(200, 120, 50);
+		Redovna redovna = new Redovna(34, 34, 34);
+		Njega njega = new Njega(300, 200, 100);
+		Njega njega1 = new Njega(3100, 200, 100);
+		Vanredne_i_stete van = new Vanredne_i_stete(300, 200, 100);
 
 		vrsta1.setDoznaka(doznaka1);
 		vrsta1.setRedovna(redovna);
@@ -58,10 +67,9 @@ public class Aplikacija {
 		odjel.getListaOdsjeka().add(odsjek01);
 		odjel.getListaOdsjeka().add(odsjek02);
 
-		odjeli.add(odjel);
-	*/
-	
+		odjeli.add(odjel);*/
 
+	
 	}
 }
 
@@ -141,6 +149,7 @@ public class Aplikacija {
  * 
  * // Validacija.vrsteUOdsjeku("211", listaVrsta01); //
  * Validacija.odjelaUIskazu("156", listaOdjela);
+ * 
  * 
  * System.out.println(listaOdjela);
  */

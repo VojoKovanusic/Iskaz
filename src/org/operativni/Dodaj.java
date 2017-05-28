@@ -51,7 +51,7 @@ public class Dodaj {
 
 	public static Odsjek odsjek(Odjel odjel) {
 		System.out.println("Unesite broj odsjeka:");
-		int brojOdsjeka = unos.nextInt();
+		String brojOdsjeka = unos.next();
 		System.out.println("Unesite gazdinsku klasu");
 		int gk = unos.nextInt();
 		if (Validacija.odsjeka(brojOdsjeka, odjel, gk)) {
@@ -66,7 +66,7 @@ public class Dodaj {
 
 	public static Vrsta vrstu(Odsjek odsjek) {
 		System.out.println("Unesite vrstu u numerickom obliku:");
-		int imeVrste = unos.nextInt();
+		String imeVrste = unos.next();
 		if (Validacija.vrste(imeVrste, odsjek.getListaVrsta())) {
 			Vrsta vrsta = new Vrsta(imeVrste);
 			// postavioDefaultSjece(vrsta);
