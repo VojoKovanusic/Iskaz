@@ -9,7 +9,9 @@ import org.deklerativni.Doznaka;
 import org.deklerativni.Njega;
 import org.deklerativni.Odjel;
 import org.deklerativni.Odsjek;
+import org.deklerativni.Proreda;
 import org.deklerativni.Redovna;
+import org.deklerativni.Uzici;
 import org.deklerativni.Vanredne_i_stete;
 import org.deklerativni.Vrsta;
 import org.hibernate.Session;
@@ -24,41 +26,78 @@ public class Aplikacija {
 		SessionFactory sf = new Configuration().configure()
 				.buildSessionFactory();
 
-		Meni.ispisGlavnuPonudu();
 
 		List<Odjel> odjeli = Baza.dohvatiOdjele(sf);
-Rekapitulacija.poVrstama_i_TipovimaSjeca(odjeli);
+		
+		
+		Meni.ispisSve(odjeli);
+		Odjel odjel = new Odjel(450);
+
+		Odsjek odsjek01 = new Odsjek("09", 3333);
+		Odsjek odsjek02 = new Odsjek("08", 2222);
+
+	Doznaka doznaka1 = new Doznaka(5,5,5);
+		Uzici uzici = new Uzici(5,5,5);
+
+		Vrsta vrsta1 = new Vrsta("69");
+		Vrsta vrsta2 = new Vrsta("69");
+
+		Redovna redovna = new Redovna(5,5,5);
+		Njega njega = new Njega(5,5,5);
+		Proreda p=new Proreda(5,5,5);
+		Njega njega1 = new Njega(5,5,5);
+		
+		Vanredne_i_stete van = new Vanredne_i_stete(5,5,5);
+
+		vrsta2.setDoznaka(doznaka1);
+		vrsta2.setRedovna(redovna);
+		vrsta2.setNjega(njega);
+         vrsta2.setProreda(p);
+		vrsta2.setUzici(uzici);
+		vrsta1.setNjega(njega1);
+        vrsta1.setVanredne(van);
+		odsjek01.getListaVrsta().add(vrsta1);
+		odsjek01.getListaVrsta().add(vrsta2);
+
+		odjel.getListaOdsjeka().add(odsjek01);
+		odjel.getListaOdsjeka().add(odsjek02);
+
+		odjeli.add(odjel);
+
+		Baza.sacuvajPromjene(sf, odjeli);
+     // Rekapitulacija.poVrstama_i_TipovimaSjeca(odjeli);
 
 
 	
 
 	//	Rekapitulacija.poVrstama_i_TipovimaSjeca(odjeli);
-		// 	Baza.sacuvajPromjene(sf, odjeli); Dodaj.dodaj(odjeli);
 
-		//
+		/*
 
-	/*	Odjel odjel = new Odjel(230);
+	Odjel odjel = new Odjel(55);
 
-		Odsjek odsjek01 = new Odsjek("01", 4141);
-		Odsjek odsjek02 = new Odsjek("02", 3224);
+		Odsjek odsjek01 = new Odsjek("03", 4241);
+		Odsjek odsjek02 = new Odsjek("05", 1212);
 
-		Doznaka doznaka1 = new Doznaka(200, 60, 70);
-		Doznaka doznaka2 = new Doznaka(150, 40, 50);
+	Doznaka doznaka1 = new Doznaka(1,1,1);
+		Uzici uzici = new Uzici(1,1,1);
 
-		Vrsta vrsta1 = new Vrsta("21");
-		Vrsta vrsta2 = new Vrsta("41");
+		Vrsta vrsta1 = new Vrsta("23");
+		Vrsta vrsta2 = new Vrsta("23");
 
-		Redovna redovna = new Redovna(34, 34, 34);
-		Njega njega = new Njega(300, 200, 100);
-		Njega njega1 = new Njega(3100, 200, 100);
-		Vanredne_i_stete van = new Vanredne_i_stete(300, 200, 100);
+		Redovna redovna = new Redovna(1,1,1);
+		Njega njega = new Njega(1,1,1);
+		Proreda p=new Proreda(10,4,3);
+		Njega njega1 = new Njega(1,1,1);
+		
+		Vanredne_i_stete van = new Vanredne_i_stete(4, 1, 1);
 
-		vrsta1.setDoznaka(doznaka1);
-		vrsta1.setRedovna(redovna);
-		vrsta1.setNjega(njega);
+		vrsta2.setDoznaka(doznaka1);
+		vrsta2.setRedovna(redovna);
+		vrsta2.setNjega(njega);
 		vrsta1.setVanredne(van);
-
-		vrsta2.setDoznaka(doznaka2);
+vrsta2.setProreda(p);
+		vrsta2.setUzici(uzici);
 		vrsta2.setNjega(njega1);
 
 		odsjek01.getListaVrsta().add(vrsta1);
@@ -67,8 +106,9 @@ Rekapitulacija.poVrstama_i_TipovimaSjeca(odjeli);
 		odjel.getListaOdsjeka().add(odsjek01);
 		odjel.getListaOdsjeka().add(odsjek02);
 
-		odjeli.add(odjel);*/
+		odjeli.add(odjel);
 
+		 */
 	
 	}
 }

@@ -30,8 +30,8 @@ public class Meni {
 
 	public static void ispisSve(List<Odjel>odjeli){
 		for (Odjel odjel : odjeli) {
-			System.out.println("Broj odjela: "+odjel.getBrojOdjela());
 			for (Odsjek odsjek : odjel.getListaOdsjeka()) {
+				System.out.println("\nBroj odjela:**"+odjel.getBrojOdjela()+"**");
 				System.out.println("Broj odsjeka:"+odsjek.getBrojOdsjeka()+" GK "+odsjek.getGK());
 				for (Vrsta vrsta : odsjek.getListaVrsta()) {
 					System.out.println(vrsta.toString());

@@ -1,7 +1,6 @@
 package org.operativni;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.deklerativni.Njega;
@@ -13,8 +12,6 @@ import org.deklerativni.Redovna;
 import org.deklerativni.Uzici;
 import org.deklerativni.Vanredne_i_stete;
 import org.deklerativni.Vrsta;
-
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class Rekapitulacija {
 
@@ -30,8 +27,9 @@ public class Rekapitulacija {
 		saberiSve(vrsteRekapitulacija, (ArrayList<Vrsta>) vrsteIskaz);
 
 		// ispis prve rekapitulacije u iskazu
-		// ispisiRekapitulacijuPoVrstiSjece(vrsteRekapitulacija);
+		ispisiRekapitulacijuPoVrstiSjece(vrsteRekapitulacija);
 		ispisiPoVrstamaUkupnuSjecu(vrsteRekapitulacija);
+
 	}
 
 	private static void ispisiRekapitulacijuPoVrstiSjece(
@@ -85,31 +83,14 @@ public class Rekapitulacija {
 
 		}
 	}
-
+//NIJE ZAVRSENO
 	private static void ispisiPoVrstamaPrelaze(
-			ArrayList<Vrsta> vrsteRekapitulacija) {
-		for (Vrsta vrsta : vrsteRekapitulacija) {
-			System.out.println("\n["
-					+ vrsta.getNazivVrste()
-					+ "] |Bruto->"
-					+ (vrsta.getRedovna().getBruto()
-							+ vrsta.getUzici().getBruto()
-							+ vrsta.getProreda().getBruto()
-							+ vrsta.getVanredne().getBruto() + vrsta.getNjega()
-							.getBruto())
-					+ " Oblo tex.->"
-					+ (vrsta.getRedovna().getTehnika()
-							+ vrsta.getUzici().getTehnika()
-							+ vrsta.getProreda().getTehnika()
-							+ +vrsta.getVanredne().getTehnika() + vrsta
-							.getNjega().getTehnika())
-					+ " Ogrev->"
-					+ (vrsta.getRedovna().getOgrev()
-							+ vrsta.getUzici().getOgrev()
-							+ vrsta.getProreda().getOgrev()
-							+ vrsta.getVanredne().getOgrev() + vrsta.getNjega()
-							.getOgrev()));
+			ArrayList<Vrsta> vrsteRekapitulacija)
 
+	{
+		for (Vrsta vrsta : vrsteRekapitulacija) {
+			System.out.println("\n[" + vrsta.getNazivVrste() + "]"
+					+ vrsta.getNeposjecenoBruto());
 		}
 	}
 
@@ -199,6 +180,7 @@ public class Rekapitulacija {
 		return prelazi;
 	}
 
+	// vraca mi listu sifri-vrsta koje su koristene
 	private static ArrayList<String> sveSifre(List<Odjel> odjeli) {
 		ArrayList<String> sifre = new ArrayList<String>();
 		for (Odjel odjel : odjeli) {
@@ -209,7 +191,7 @@ public class Rekapitulacija {
 				}
 			}
 		}
-		
+
 		sifre.add("Cet");
 		sifre.add("Lis");
 		sifre.add("C+L");

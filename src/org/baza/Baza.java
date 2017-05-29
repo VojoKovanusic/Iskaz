@@ -18,7 +18,7 @@ public class Baza {
 		session.beginTransaction();
 		Query q = session.createQuery("from Odjel");
 		List<Odjel> odjeli = (List<Odjel>) q.list();
-		
+
 		for (Odjel odjel : odjeli) {
 			for (Odsjek odsjek : odjel.getListaOdsjeka()) {
 				for (Vrsta vrsta : odsjek.getListaVrsta()) {
